@@ -6,7 +6,9 @@ module SpreeContactUs
 
     initializer 'spree.contact_us.preferences', after: 'spree.environment' do
       module Spree::ContactUs
-        Config = Spree::ContactUsConfiguration.new
+        Rails.application.config.to_prepare do
+          Config = Spree::ContactUsConfiguration.new
+        end
       end
     end
 
